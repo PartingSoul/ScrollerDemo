@@ -126,8 +126,10 @@ public class MessageItem extends ViewGroup {
                 int dx = (int) (mLastX - event.getX());
                 // 0  <= scrollX <= maxScrollX
                 if (dx <= 0 && dx + getScrollX() < 0) {
+                    // 右划
                     scrollTo(0, 0);
                 } else if (dx >= 0 && dx + getScrollX() > maxScrollX) {
+                    // 左划
                     scrollTo(maxScrollX, 0);
                 } else {
                     scrollBy(dx, 0);
@@ -163,7 +165,7 @@ public class MessageItem extends ViewGroup {
     public void computeScroll() {
         if (mScroller.computeScrollOffset()) {
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
-            invalidate();
+            postInvalidate();
         }
     }
 }

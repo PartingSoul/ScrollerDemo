@@ -110,7 +110,7 @@ public class CustomScrollerLayout extends ViewGroup {
         if (mScroller.computeScrollOffset()) {
             // 未结束则继续滑动
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
-            invalidate();
+            postInvalidate();
         }
     }
 }

@@ -1,0 +1,46 @@
+@startuml
+
+View -> Scroller: 1.startScroll()
+activate Scroller
+View <-- Scroller
+deactivate Scroller
+
+View -> View: 2.invalidate()
+activate View
+deactivate View
+
+loop computeScrollOffset()为 true
+View -> View: 3.draw(Canvas,ViewGroup,long)
+activate View
+
+
+View -> View: 4.computeScroll()
+activate View
+
+View -> Scroller: 5.computeScrollOffset()
+activate Scroller
+View <-- Scroller : true
+deactivate Scroller
+
+View -> Scroller: 6.getCurrX()
+View -> Scroller: 7.getCurrY()
+
+View -> View: 8.scrollTo()
+activate View
+deactivate View
+
+View -> View: 9.postInvalidate()
+activate View
+deactivate View
+
+deactivate View
+
+View -> View: 10.Canvas.translate(sx,sy)
+activate View
+deactivate View
+
+end
+deactivate View
+
+@enduml
+

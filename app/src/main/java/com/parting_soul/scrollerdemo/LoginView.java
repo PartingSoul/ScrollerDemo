@@ -82,8 +82,10 @@ public class LoginView extends RelativeLayout {
                 // -height <= scrollY  <= 0
                 int dy = (int) (mLastY - event.getY());
                 if (dy >= 0 && getScrollY() + dy > 0) {
+                    // 手指向上滑动 scrollY必须小于等于0
                     scrollTo(0, 0);
                 } else if (dy <= 0 && getScrollY() + dy < -getHeight()) {
+                    // 手指向下滑动 scrollY必须大于-getHeight
                     scrollTo(0, -getHeight());
                 } else {
                     scrollBy(0, dy);
@@ -108,7 +110,7 @@ public class LoginView extends RelativeLayout {
     public void computeScroll() {
         if (mScroller.computeScrollOffset()) {
             scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
-            invalidate();
+            postInvalidate();
         }
     }
 
